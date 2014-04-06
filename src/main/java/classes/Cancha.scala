@@ -1,3 +1,7 @@
+/**
+ * @author matlock
+ */
+
 package classes
 import scala.collection.mutable._
 import excepciones.HorarioYaSeleccionadoException
@@ -7,7 +11,7 @@ import excepciones.HorarioYaSeleccionadoException
   var identificador = id
   var techada = contecho
   var iluminada = ilum
-  var listaDeReservacion  =  map
+  val listaDeReservacion  =  map
   
   def costo():Int 
   

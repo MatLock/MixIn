@@ -1,3 +1,6 @@
+/**
+ * @author matlock
+ */
 package classes
 
 class Pronosticador {

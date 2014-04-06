@@ -17,7 +17,7 @@ trait Lluvioso{
  
  trait Iluminada{
    def costoIluminacion():Double ={
-     return 0.1
+     return 0.2
    }
  }
  

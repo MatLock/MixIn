@@ -1,16 +1,20 @@
+/**
+ * @author matlock
+ */
+
 package classes
 import classes._
 import scala.collection.mutable._
 
 object prueba extends App{
 
-	var listaDeR : Map[Int,ArrayBuffer[Int]] =  Map()
+	val listaDeR : Map[Int,ArrayBuffer[Int]] =  Map()
     val tenis =  new Tenis("tenis",false,false,listaDeR)
     println(tenis.costo())
     println(tenis.identificador)
     
-    var listaDeReservacion : Map[Int,ArrayBuffer[Int]] =  Map()
-    var listaDeReservacion2 : Map[Int,ArrayBuffer[Int]] =  Map()
+    val listaDeReservacion : Map[Int,ArrayBuffer[Int]] =  Map()
+    val listaDeReservacion2 : Map[Int,ArrayBuffer[Int]] =  Map()
     val l2 = ArrayBuffer
     val l=  ArrayBuffer(1,2,3)
     listaDeReservacion += 3 -> l
@@ -31,5 +35,9 @@ object prueba extends App{
     tenis.agregarReservacion(2, 17)
     println(tenis.listaDeReservacion)
     println(tenis.estaReservada(2,17))
+    
+    
+    val o = List(1,2,3)
+    println ( o find{a => a == 3})
     
 }

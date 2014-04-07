@@ -1,9 +1,10 @@
 package traits
 
+
 trait Lluvioso{
 
   def costoPorClima():Double = {
-    return 0.1
+    return 1.1
   }
 }
 
@@ -16,8 +17,8 @@ trait Lluvioso{
  // ILUMINACION //
  
  trait Iluminada{
-   def costoIluminacion():Double ={
-     return 0.2
+  def costoIluminacion():Double ={
+     return 1.2
    }
  }
  

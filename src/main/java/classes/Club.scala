@@ -34,9 +34,11 @@ class Club(name :String) {
 	  if (estadoClimatico.equals("Lluvia")){
 	    val reserva = new Reserva(fecha,hora,titular,cancha) with Iluminada with Lluvioso
 	    this.reservas += reserva
+	    reserva.setCosto(reserva.costoIluminacion(),reserva.costoPorClima())
 	  }else{
 	    val reserva = new Reserva(fecha,hora,titular,cancha) with Iluminada with Soleado
 	    this.reservas += reserva
+	    reserva.setCosto(reserva.costoIluminacion(),reserva.costoPorClima())
 	  }
 	  cancha.agregarReservacion(fecha, hora)
   }
@@ -59,7 +61,7 @@ class Club(name :String) {
   }
   
   def reservarCancha(nombreDeCancha :String, titular :String, fecha :Int, hora :Int){
-	  if (fecha > 18){
+	  if (hora > 18){
 	    this.reservarDespuesDeLas18(nombreDeCancha,titular,fecha,hora)
 	  }else{
 	    this.reservarAntesDeLas18(nombreDeCancha,titular,fecha,hora)

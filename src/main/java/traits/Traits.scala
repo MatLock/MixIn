@@ -27,7 +27,7 @@ trait Iluminado extends Cancha{
 trait conTribuna extends Cancha{
   
    override def precio(dia :Int, hora :Int):Double ={
-     if (new Pronosticador().dia(dia).equals("sabado")){
+     if (new Pronosticador().dia(dia).equals("FindeSemana")){
        return super.precio(dia,hora)* 2
      }
      return super.precio(dia,hora)

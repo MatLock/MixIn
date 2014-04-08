@@ -15,8 +15,8 @@ class Pronosticador {
   
   def dia(fecha :Int):String ={
     if(fecha == 7 || fecha==8 || fecha==14 || fecha==15){
-      return "sabado"
+      return "FinDeSemana"
     }
-    return "lunes"
+    return "Semana"
   }
 }

@@ -1,66 +1,57 @@
-/**
- * @author matlock
- */
-
 package classes
 import scala.collection.mutable._
-import excepciones.HorarioYaSeleccionadoException
-
- abstract class Cancha(id :String,contecho :Boolean, ilum :Boolean, map :Map[Int,ArrayBuffer[Int]]) {
+import excepciones._
+ 
+abstract class Cancha(id :String, map :Map[Int,ArrayBuffer[Int]],precio :Double) {
    
   var identificador = id
-  var techada = contecho
-  var iluminada = ilum
   val listaDeReservacion  =  map
+  var costo  = precio
   
-  def costo():Int 
-  
-  
-  private def agregarSiNoExisteDia(dia :Int){
+  def agregarSiNoExisteDia(dia :Int){
     if (! this.listaDeReservacion.contains(dia)){
     	this.listaDeReservacion += dia -> new ArrayBuffer[Int]
     }
   }
   
-  def agregarReservacion(dia :Int, hora :Int){
-	  this.agregarSiNoExisteDia(dia)
-	  var lista = this.listaDeReservacion.get(dia).get
-	  if (lista.contains(hora)){
-	    throw new HorarioYaSeleccionadoException("la cancha  "+"'"+this.identificador+"'"+" ya fue reservada")
-	  }else{
-		  lista += (hora)
+  def chequearHorario(hora:Int){
+	  if (hora > 18){
+		  throw new HorarioYaSeleccionadoException("la cancha  "+"'"+this.identificador+"'"+" no tiene Iluminacion")
 	  }
   }
-  
-  def estaReservada(dia :Int, hora:Int) :Boolean ={
-    return this.listaDeReservacion.get(dia).get.contains(hora)
+    
+  def reservar(dia :Int,hora :Int){
+      this.agregarSiNoExisteDia(dia)
+	  var lista = this.listaDeReservacion.get(dia).get
+		  lista += (hora)
   }
   
+  def precio(dia :Int, hora :Int) :Double ={
+	this.chequearHorario(hora)
+    return costo
+  }
+
 }
+
+
+
+
+
 
                      /** clases concretas **/
 
-class Futbol (id :String,contecho :Boolean, ilum :Boolean,map :Map[Int,ArrayBuffer[Int]])
-extends Cancha(id,contecho,ilum,map){ 
-  
-  def costo(): Int = {
-    return 40 * 10
-  }
+class Futbol (id :String,map :Map[Int,ArrayBuffer[Int]])
+extends Cancha(id,map,400){ 
+ 
   
 }
 
-class Tenis (id :String,contecho :Boolean, ilum :Boolean,map :Map[Int,ArrayBuffer[Int]])
-extends Cancha(id,contecho,ilum,map){
+class Tenis (id :String,map :Map[Int,ArrayBuffer[Int]])
+extends Cancha(id,map,150){
        
-  def costo(): Int = {
-    return 150
-  } 
 }
 
-class Paddle (id :String,contecho :Boolean, ilum :Boolean,map :Map[Int,ArrayBuffer[Int]])
-extends Cancha(id,contecho,ilum,map){
+class Paddle (id :String,map :Map[Int,ArrayBuffer[Int]])
+extends Cancha(id,map,100){
   
-  def costo(): Int = {
-    return 100
-  }
 }

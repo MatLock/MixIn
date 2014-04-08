@@ -5,13 +5,12 @@
 package classes
 import classes._
 import scala.collection.mutable._
+import traits._
 
 object prueba extends App{
-
+  /*
 	val listaDeR : Map[Int,ArrayBuffer[Int]] =  Map()
-    val tenis =  new Tenis("tenis",false,false,listaDeR)
-    println(tenis.costo())
-    println(tenis.identificador)
+
     
     val listaDeReservacion : Map[Int,ArrayBuffer[Int]] =  Map()
     val listaDeReservacion2 : Map[Int,ArrayBuffer[Int]] =  Map()
@@ -31,13 +30,17 @@ object prueba extends App{
     println(listaDeReservacion)
     println (listaDeReservacion2)
     println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    println(tenis.listaDeReservacion)
-    tenis.agregarReservacion(2, 17)
-    println(tenis.listaDeReservacion)
-    println(tenis.estaReservada(2,17))
     
     
     val o = List(1,2,3)
     println ( o find{a => a == 3})
     
+    */
+    val listaDeR =  Map[Int,ArrayBuffer[Int]]()
+	val canchaFutbol = new Futbol("futbol1",listaDeR) with Iluminado with ConTecho with conTribuna
+    val club = new Club("pepito")
+    club.canchas += canchaFutbol
+    club.reservar("titular", 8, 20, "futbol1")
+    val reserva = club.reservas find {a => a.titular.equals("titular")}
+    println (reserva.get.costo)
 }

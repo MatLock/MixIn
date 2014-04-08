@@ -1,29 +1,38 @@
 package traits
+import classes._
 
-
-trait Lluvioso{
-
-  def costoPorClima():Double = {
-    return 1.1
-  }
+trait ConTecho extends Cancha {
+  
+ override def precio(dia :Int, hora :Int) :Double ={
+   if(new Pronosticador().getClima(dia).equals("Lluvia")){
+	   return super.precio(dia,hora) * 1.1
+   };return super.precio(dia,hora)
+ }
+ 
+ override def chequearHorario(hora :Int){}
 }
 
- trait Soleado{
-    def costoPorClima():Double = {
-     return 1
+
+trait Iluminado extends Cancha{
+  
+ override def precio(dia :Int, hora :Int):Double = {
+    if(hora > 18){
+    	return super.precio(dia,hora) * 1.2
+    }
+    return super.precio(dia,hora)
+ }
+}
+ 
+ 
+trait conTribuna extends Cancha{
+  
+   override def precio(dia :Int, hora :Int):Double ={
+     if (new Pronosticador().dia(dia).equals("sabado")){
+       return super.precio(dia,hora)* 2
+     }
+     return super.precio(dia,hora)
    }
  }
+  
  
- // ILUMINACION //
  
- trait Iluminada{
-  def costoIluminacion():Double ={
-     return 1.2
-   }
- }
- 
- trait SinIluminacion{
-   def costoIluminacion():Double ={
-     return 1
-   }
- }

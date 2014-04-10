@@ -16,14 +16,18 @@ abstract class Cancha(id :String, map :Map[Int,ArrayBuffer[Int]],precio :Double)
   
   def chequearHorario(hora:Int){
 	  if (hora > 18){
-		  throw new HorarioYaSeleccionadoException("la cancha  "+"'"+this.identificador+"'"+" no tiene Iluminacion")
+		  throw new CanchaSinIluminacionException("la cancha  "+"'"+this.identificador+"'"+" no tiene Iluminacion")
 	  }
   }
     
   def reservar(dia :Int,hora :Int){
       this.agregarSiNoExisteDia(dia)
 	  var lista = this.listaDeReservacion.get(dia).get
+	  if(lista.contains(hora)){
+	    throw new HorarioYaSeleccionadoException("la cancha"+"'"+this.identificador+"'"+" ya esta reservada")
+	  }else{
 		  lista += (hora)
+	  }
   }
   
   def precio(dia :Int, hora :Int) :Double ={

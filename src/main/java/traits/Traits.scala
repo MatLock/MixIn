@@ -9,7 +9,6 @@ trait ConTecho extends Cancha {
    };return super.precio(dia,hora)
  }
  
- override def chequearHorario(hora :Int){}
 }
 
 
@@ -21,6 +20,7 @@ trait Iluminado extends Cancha{
     }
     return super.precio(dia,hora)
  }
+ override def chequearHorario(hora :Int){}
 }
  
  

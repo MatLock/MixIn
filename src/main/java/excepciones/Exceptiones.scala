@@ -8,7 +8,3 @@ class HorarioYaSeleccionadoException(mensaje :String) extends RuntimeException(m
 class CanchaSinIluminacionException(mensaje :String) extends RuntimeException(mensaje){
   
 }
-
-class CanchaSinTechoException(mensaje :String) extends RuntimeException(mensaje){
-  
-}

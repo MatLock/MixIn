@@ -15,6 +15,7 @@ class Club(name :String) {
     var cancha = maybecancha.get
     var costo = cancha.precio(dia, hora)
     reservas += new Reserva(dia,hora,titular,cancha,costo)
+    cancha.reservar(dia, hora)
   }
   
 

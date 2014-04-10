@@ -37,10 +37,10 @@ object prueba extends App{
     
     */
     val listaDeR =  Map[Int,ArrayBuffer[Int]]()
-	val canchaFutbol = new Futbol("futbol1",listaDeR) with Iluminado with ConTecho with conTribuna
+	val canchaFutbol = new Tenis("tenis5",listaDeR) with conTribuna with ConTecho with Iluminado
     val club = new Club("pepito")
     club.canchas += canchaFutbol
-    club.reservar("titular", 8, 20, "futbol1")
+    club.reservar("titular", 14, 23, "tenis5")
     val reserva = club.reservas find {a => a.titular.equals("titular")}
     println (reserva.get.costo)
 }

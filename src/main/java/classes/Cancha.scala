@@ -34,6 +34,24 @@ abstract class Cancha(id :String, map :Map[Int,ArrayBuffer[Int]],precio :Double)
 	this.chequearHorario(hora)
     return costo
   }
+  
+  def contieneHorario(dia :Int,hora :Int):Boolean={
+    return listaDeReservacion.get(dia).get.contains(hora)
+  }
+  
+  def libreParaDiaYHora(dia :Int,hora :Int): Boolean={
+    return !listaDeReservacion.contains(dia) || ( listaDeReservacion.contains(dia) && !this.contieneHorario(dia,hora)) 
+  }
+  
+  def obtenerMayorCantidadDeReservas():Int={
+   var dias = listaDeReservacion.keys
+   var current = 0
+   dias foreach { f => var x = listaDeReservacion.get(f).get.length; 
+     					if (x > current) { current = x } 
+     			}
+   return current
+  }
+  
 
 }
 

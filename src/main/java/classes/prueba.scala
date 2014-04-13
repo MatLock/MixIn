@@ -43,4 +43,11 @@ object prueba extends App{
     club.reservar("titular", 14, 23, "tenis5")
     val reserva = club.reservas find {a => a.titular.equals("titular")}
     println (reserva.get.costo)
+    
+    
+     for( a <- 1 to 10){
+         println( "Value of a: " + a );
+      }
+    
+    
 }

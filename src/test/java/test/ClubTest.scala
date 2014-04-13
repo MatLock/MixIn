@@ -39,7 +39,6 @@ class CanchaTest extends FlatSpec with ShouldMatchers {
 				val canchaFutbol4 = new Futbol("futbol4",listaDeRf4) with ConTecho
 				val canchaFutbol5 = new Futbol("futbol5",listaDeRf5) with conTribuna
 				val canchaFutbol6 = new Futbol("futbol6",listaDeRf6) with ConTecho with conTribuna
-				/* tiene que retornar error Excepcion! son las 22 horas" */
 				
 	            
 	            
@@ -160,6 +159,57 @@ class CanchaTest extends FlatSpec with ShouldMatchers {
 			club.reservar("titular10", 1, 1, "tenis5")
 			club.reservar("titular10", 1, 1, "tenis5")
 			}
+			
+			/** Testeo De Estadisticas **/
+			
+			val club2 = new Club("El grillo")
+			val listaDeRf21 =  Map[Int,ArrayBuffer[Int]]()
+			val listaDeRf22 =  Map[Int,ArrayBuffer[Int]]()
+			val listaDeRf23 =  Map[Int,ArrayBuffer[Int]]()
+			val listaDeRf24 =  Map[Int,ArrayBuffer[Int]]()
+			val canchaFutbol21 = new Futbol("futbol21",listaDeRf21)
+			val canchaFutbol22 = new Futbol("futbol22",listaDeRf22)
+			val canchaFutbol23 = new Futbol("futbol23",listaDeRf23)
+			val canchaFutbol24 = new Futbol("futbol24",listaDeRf24)
+			club2.canchas += canchaFutbol21
+			club2.canchas += canchaFutbol22
+			club2.canchas += canchaFutbol23
+			club2.canchas += canchaFutbol24
+			
+			/* CANCHAS  RESERVADAS PARA UN DIA 2.a */
+			"las canchas  reservadas" should "ser futbol21 y futbol 22" in{
+			  club2.reservar("titular20", 1, 12, "futbol21")
+			  club2.reservar("titular21", 1, 12, "futbol22")
+			  club2.reservar("titular22", 2, 12, "futbol23")
+			  club2.reservar("titular21", 1, 13, "futbol21")
+			  var list = club2.obtenerCanchasConReservas(1)
+			  list.head.identificador should equal("futbol21")
+			  list.remove(0)
+			  list.head.identificador should equal("futbol22")
+			}
+			
+			/* OBTENER TODAS LAS RESERVAS PARA UN DIA  2.b*/
+			"las reservas para un dia" should "ser las que tengan titular20 y titular22" in{
+			  var list = club2.obtenerTodasLasReservasParaUnDia(1)
+			  list.head.titular should equal("titular20")
+			  list.remove(0)
+			  list.head.titular should equal("titular21")
+			}
+			
+			/* OBTENER CANCHA LIBRE PARA DIA Y HORARIO 2.c*/
+			"la cancha libre para un dia y horario" should "ser futbol1" in{
+			 club2.BuscarCanchaLibre(1,10).identificador should equal("futbol21")
+			}
+			
+			/* LA CANCHA MAS RESERVADA ES 2.d*/
+			"la cancha mas reservada" should "ser futbol1" in{
+			 club2.obtenerCanchaMasReservada() should equal("futbol21") 
+			}
+			
+			/* TOTAL DE FACTURACION  2.e*/
+			"el total de facturacion" should "ser 1600" in{
+			  club2.totalDeFacturacion should equal(1600)
+			} 
 		
 }
 	

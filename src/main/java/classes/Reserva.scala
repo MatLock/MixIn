@@ -13,5 +13,4 @@ class Reserva(undia:Int ,unhorario:Int, untitular:String , unacancha :Cancha, un
   var titular  = untitular
   var costo = uncosto
   val cancha = unacancha
-  
 }

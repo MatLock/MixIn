@@ -33,12 +33,12 @@ class CanchaTest extends FlatSpec with ShouldMatchers {
 				 
 				//CANCHAS DE FUTBOL
 				
-				val canchaFutbol = new Futbol("futbol1",listaDeRf1) with Iluminado with ConTecho with conTribuna
-				val canchaFutbol2 = new Futbol("futbol2",listaDeRf2) with Iluminado with ConTecho
-				val canchaFutbol3 = new Futbol("futbol3",listaDeRf3)
-				val canchaFutbol4 = new Futbol("futbol4",listaDeRf4) with ConTecho
-				val canchaFutbol5 = new Futbol("futbol5",listaDeRf5) with conTribuna
-				val canchaFutbol6 = new Futbol("futbol6",listaDeRf6) with ConTecho with conTribuna
+				val canchaFutbol = new Futbol("futbol1",listaDeRf1,10) with Iluminado with ConTecho with conTribuna
+				val canchaFutbol2 = new Futbol("futbol2",listaDeRf2,10) with Iluminado with ConTecho
+				val canchaFutbol3 = new Futbol("futbol3",listaDeRf3,10)
+				val canchaFutbol4 = new Futbol("futbol4",listaDeRf4,10) with ConTecho
+				val canchaFutbol5 = new Futbol("futbol5",listaDeRf5,10) with conTribuna
+				val canchaFutbol6 = new Futbol("futbol6",listaDeRf6,10) with ConTecho with conTribuna
 				
 	            
 	            
@@ -167,10 +167,10 @@ class CanchaTest extends FlatSpec with ShouldMatchers {
 			val listaDeRf22 =  Map[Int,ArrayBuffer[Int]]()
 			val listaDeRf23 =  Map[Int,ArrayBuffer[Int]]()
 			val listaDeRf24 =  Map[Int,ArrayBuffer[Int]]()
-			val canchaFutbol21 = new Futbol("futbol21",listaDeRf21)
-			val canchaFutbol22 = new Futbol("futbol22",listaDeRf22)
-			val canchaFutbol23 = new Futbol("futbol23",listaDeRf23)
-			val canchaFutbol24 = new Futbol("futbol24",listaDeRf24)
+			val canchaFutbol21 = new Futbol("futbol21",listaDeRf21,10)
+			val canchaFutbol22 = new Futbol("futbol22",listaDeRf22,10)
+			val canchaFutbol23 = new Futbol("futbol23",listaDeRf23,10)
+			val canchaFutbol24 = new Futbol("futbol24",listaDeRf24,10)
 			club2.canchas += canchaFutbol21
 			club2.canchas += canchaFutbol22
 			club2.canchas += canchaFutbol23

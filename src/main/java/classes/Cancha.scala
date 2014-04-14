@@ -55,16 +55,16 @@ abstract class Cancha(id :String, map :Map[Int,ArrayBuffer[Int]],precio :Double)
 
 }
 
-
-
-
-
-
                      /** clases concretas **/
 
-class Futbol (id :String,map :Map[Int,ArrayBuffer[Int]])
-extends Cancha(id,map,400){ 
- 
+class Futbol (id :String,map :Map[Int,ArrayBuffer[Int]],cantdeJugadores :Int)
+extends Cancha(id,map,40){ 
+     var jugadores = cantdeJugadores
+     
+     override def precio(dia:Int,hora:Int):Double ={
+       this.chequearHorario(hora)
+       return jugadores * costo
+     }
   
 }
 
